@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请输入"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:maxLines="1"/>
+
+        <Button
+            android:id="@+id/buttonl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Run" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:maxLines="1"/>
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:digits="123456789"
+            android:maxLines="1"/>
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="Run" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="26sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用前请先阅读说明"
+        android:textColor="#ed0000"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24sp"
+        android:text="本程序第一行用于化简根号下只包含正整数的二次根式\n使用方法：\n1、在第一行输入框中输入需要化简的二次根式下的正整数\n2、单击“RUN”按钮\n3、查看上方文本框中的化简结果（√表示根号，√后的所有内容皆包括在根号之下）"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24sp"
+        android:text="警告：只允许输入自然数，且不得超过390000000"
+        android:textColor="#ff8400"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="注：第二行功能尚未开发，敬请期待！"
+        android:textColor="#0bdb00"/>
+
+</LinearLayout>
