@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editText2;
     private EditText editText3;
     private TextView textView;
+    private TextView textView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,25 +26,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button button1 = (Button) findViewById(R.id.buttonl);
         Button button2 = (Button) findViewById(R.id.button2);
         textView = (TextView) findViewById(R.id.text);
+        textView1 = (TextView) findViewById(R.id.text1);
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
     }
 
     public void onClick(View v){
         switch (v.getId()) {
+            //计算第一行的整数化简
             case R.id.buttonl:
+                //用于存储输入的数字的字符串形式
                 String inputText = editText1.getText().toString();
+                //判断越界（无效）
                 if (Integer.parseInt(inputText) > 390000000) {
                     Toast.makeText(MainActivity.this, "输入数值不要超过390000000",
                     Toast.LENGTH_SHORT).show();
+                    break;
                 }
+                //用于存储输入数字的int形式
                 int inputNum = Integer.parseInt(inputText);
-                if (inputNum == 0) {
+                if (inputNum == 0) {    //如果输入0则直接输出0
                     textView.setText("0");
                     break;
                 }
+                /*
+                    用于存储输出数字的int型，其中，第0个元素存储为-1时说明所输入数开方能够开尽，为0时说明所输入数
+                    为最简二次根式，不符合以上两种情况时，所储存数为二次根式系数。在第三种情况下，第1个元素所储存
+                    的为化简后根号下剩余的数。
+                 */
                 int outputNum[];
                 outputNum = sqrth(inputNum);
+                //输出结果
                 if (outputNum[0] == -1) {
                     String outputText = String.valueOf(Math.sqrt(inputNum));
                     textView.setText(outputText);
@@ -60,14 +73,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String inputText2 = editText2.getText().toString();
                 String inputText3 = editText3.getText().toString();
                 int inputNum2 = Integer.parseInt(inputText2);
+//                int inputNum2 = 1;
                 int inputNum3 = Integer.parseInt(inputText3);
                 if (inputNum2 == 0) {
                     textView.setText("0");
                     break;
                 }
-                int outPutNumG[];
-                int outPutNum2;
-                int outPutNum3;
+                if (inputNum3 == 0) {
+                    Toast.makeText(MainActivity.this, "分母不能为0",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                if (inputNum2 == 1) {
+                    int outPutNumG[];
+                    outPutNumG = sqrth(inputNum3);
+                    if (outPutNumG[0] == -1) {
+                        String outputText = String.valueOf((int) Math.sqrt(inputNum2));
+                        String outputText1 = String.valueOf((int) Math.sqrt(inputNum3));
+                        textView.setText(outputText);
+                        textView1.setText(outputText1);
+                    } else if (outPutNumG[0] == 0) {
+                        String outputText = "√" + String.valueOf(inputNum3);
+                        String outputText1 = String.valueOf(inputNum3);
+                        textView.setText(outputText);
+                        textView1.setText(outputText1);
+                    } else {
+                        String outputText = "√" + String.valueOf(outPutNumG[1]);
+                        String outputText1 = String.valueOf(outPutNumG[0] * outPutNumG[1]);
+                        textView.setText(outputText);
+                        textView1.setText(outputText1);
+                    }
+                }
                 break;
             default:
                 break;
