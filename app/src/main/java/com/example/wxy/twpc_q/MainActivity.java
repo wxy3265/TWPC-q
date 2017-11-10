@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             //计算第一行的整数化简
             case R.id.buttonl:
+                textView1.setText(" ");
                 //用于存储输入的数字的字符串形式
                 String inputText = editText1.getText().toString();
                 //判断越界（无效）
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int inputNum = Integer.parseInt(inputText);
                 if (inputNum == 0) {    //如果输入0则直接输出0
                     textView.setText("0");
+                    break;
+                } else if (inputNum == 1) {
+                    textView.setText("1");
                     break;
                 }
                 /*
@@ -84,25 +88,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Toast.LENGTH_SHORT).show();
                     break;
                 }
-                if (inputNum2 == 1) {
-                    int outPutNumG[];
-                    outPutNumG = sqrth(inputNum3);
-                    if (outPutNumG[0] == -1) {
-                        String outputText = String.valueOf((int) Math.sqrt(inputNum2));
-                        String outputText1 = String.valueOf((int) Math.sqrt(inputNum3));
-                        textView.setText(outputText);
-                        textView1.setText(outputText1);
-                    } else if (outPutNumG[0] == 0) {
-                        String outputText = "√" + String.valueOf(inputNum3);
-                        String outputText1 = String.valueOf(inputNum3);
-                        textView.setText(outputText);
-                        textView1.setText(outputText1);
-                    } else {
-                        String outputText = "√" + String.valueOf(outPutNumG[1]);
-                        String outputText1 = String.valueOf(outPutNumG[0] * outPutNumG[1]);
-                        textView.setText(outputText);
-                        textView1.setText(outputText1);
-                    }
+                int outPutNumG[];
+                outPutNumG = sqrth(inputNum3);
+                if (outPutNumG[0] == -1) {
+                    String outputText = String.valueOf((int)Math.sqrt(inputNum2));
+                    String outputText1 = String.valueOf((int)Math.sqrt(inputNum3));
+                    textView.setText(outputText);
+                    textView1.setText(outputText1);
+                } else if (outPutNumG[0] == 0) {
+                    String outputText = "√" + String.valueOf(inputNum3 * inputNum2);
+                    String outputText1 = String.valueOf(inputNum3);
+                    textView.setText(outputText);
+                    textView1.setText(outputText1);
+                } else {
+                    String outputText ="√" + String.valueOf(outPutNumG[1] * inputNum2);
+                    String outputText1 = String.valueOf(outPutNumG[0] * outPutNumG[1]);
+                    textView.setText(outputText);
+                    textView1.setText(outputText1);
                 }
                 break;
             default:
